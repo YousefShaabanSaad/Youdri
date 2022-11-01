@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "643066535122",
+    "project_id": "youdri-2004",
+    "storage_bucket": "youdri-2004.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:643066535122:android:5e39f2c195a2c9bb38e10b",
+        "android_client_info": {
+          "package_name": "com.yousef.youdri"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "643066535122-tlh73bjogpn8or7k8994bqkehmt3qs7a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDP7TYHujUWPoUcu5_2hwBR5bguzAPfIU4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "643066535122-tlh73bjogpn8or7k8994bqkehmt3qs7a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

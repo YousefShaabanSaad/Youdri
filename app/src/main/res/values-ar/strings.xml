@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+
+    <!--Todo LoginActivity-->
+    <string name="login">تسجيل الدخول</string>
+</resources>

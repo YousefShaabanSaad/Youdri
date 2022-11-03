@@ -3,4 +3,10 @@
 
     <!--Todo LoginActivity-->
     <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="phone">Phone</string>
+    <string name="password">Password</string>
+    <string name="signUp">Sign up</string>
+    <string name="noAccount">Don\'t have an account?</string>
+    <string name="forgotPassword">Forgot Password?</string>
 </resources>

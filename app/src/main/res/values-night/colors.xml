@@ -2,9 +2,9 @@
 <resources>
     <color name="appColor">#f3b35b</color>
 
-    <color name="black">#FF000000</color>
+    <color name="black">#FFFFFFFF</color>
     <color name="stayBlack">#FF000000</color>
 
-    <color name="white">#FFFFFFFF</color>
+    <color name="white">#FF000000</color>
     <color name="stayWhite">#FFFFFFFF</color>
 </resources>

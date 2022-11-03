@@ -1,7 +1,6 @@
 package com.yousef.youdri.database;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import android.content.Context;
 
 /**
  * اللَّهُمَّ صَلِّ علَى مُحَمَّدٍ وعلَى آلِ مُحَمَّدٍ، كما صَلَّيْتَ علَى إبْرَاهِيمَ وعلَى آلِ إبْرَاهِيمَ؛ إنَّكَ حَمِيدٌ مَجِيدٌ
@@ -12,14 +11,11 @@ import com.google.firebase.auth.FirebaseUser;
  * yousefshaabansaad42@gmail.com
  */
 
-public class MyRegister {
+public class CommonFunctions {
 
-    private FirebaseAuth auth;
-    public MyRegister(){
-        auth = FirebaseAuth.getInstance();
+    private Context context;
+    public CommonFunctions(Context context){
+        this.context = context;
     }
 
-    public FirebaseUser getFirebaseUser() {
-        return auth.getCurrentUser();
-    }
 }

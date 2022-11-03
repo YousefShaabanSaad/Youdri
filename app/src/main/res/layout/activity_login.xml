@@ -1,8 +1,254 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@drawable/login"
     tools:context=".activity.registration.LoginActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+<!--    <ImageView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="@dimen/_100sdp"-->
+<!--        android:src="@drawable/login"-->
+<!--        android:contentDescription="@string/login"/>-->
+
+<!--    <com.google.android.material.button.MaterialButtonToggleGroup-->
+<!--        android:id="@+id/emailOrPhone"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="@dimen/_50sdp"-->
+<!--        app:singleSelection="true"-->
+<!--        app:checkedButton="@id/emailBtn"-->
+<!--        android:background="@drawable/button_bg"-->
+<!--        android:paddingHorizontal="@dimen/_5sdp"-->
+<!--        android:layout_marginHorizontal="@dimen/_25sdp">-->
+
+<!--        <Button-->
+<!--            android:id="@+id/emailBtn"-->
+<!--            style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1"-->
+<!--            android:text="@string/email" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/phoneBtn"-->
+<!--            style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1"-->
+<!--            android:text="@string/phone" />-->
+
+<!--    </com.google.android.material.button.MaterialButtonToggleGroup>-->
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:background="@drawable/button_bg"
+        android:layout_marginHorizontal="@dimen/_25sdp"
+        android:padding="@dimen/_5sdp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/emailBtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/email"
+            android:textSize="@dimen/_15ssp"
+            android:textColor="@color/stayBlack"
+            android:gravity="center"
+            android:background="@drawable/button_bg4"/>
+
+        <TextView
+            android:id="@+id/phoneBtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:text="@string/phone"
+            android:textSize="@dimen/_15ssp"
+            android:textColor="@color/stayBlack"
+            android:gravity="center"/>
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/emailText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginHorizontal="@dimen/_25sdp"
+        android:text="@string/email"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="@dimen/_15ssp"/>
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginHorizontal="@dimen/_25sdp"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:background="@drawable/button_bg2"
+        android:drawableStart="@drawable/email"
+        android:drawablePadding="@dimen/_10sdp"
+        android:textSize="@dimen/_15ssp"
+        android:textColor="@color/appColor"
+        android:importantForAutofill="no"
+        android:inputType="textEmailAddress"
+        tools:ignore="LabelFor" />
+
+    <TextView
+        android:id="@+id/phoneText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginHorizontal="@dimen/_25sdp"
+        android:text="@string/phone"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="@dimen/_15ssp"
+        android:visibility="gone"/>
+
+    <EditText
+        android:id="@+id/phone"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginHorizontal="@dimen/_25sdp"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:background="@drawable/button_bg2"
+        android:drawableStart="@drawable/phone"
+        android:drawablePadding="@dimen/_10sdp"
+        android:textSize="@dimen/_15ssp"
+        android:textColor="@color/appColor"
+        android:importantForAutofill="no"
+        android:inputType="phone"
+        tools:ignore="LabelFor"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/passwordText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginHorizontal="@dimen/_25sdp"
+        android:text="@string/password"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="@dimen/_15ssp"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginHorizontal="@dimen/_25sdp">
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_40sdp"
+            android:background="@drawable/button_bg2"
+            android:drawableStart="@drawable/password"
+            android:drawablePadding="@dimen/_10sdp"
+            android:textSize="@dimen/_15ssp"
+            android:textColor="@color/appColor"
+            android:importantForAutofill="no"
+            android:inputType="textPassword"
+            tools:ignore="LabelFor"/>
+
+        <ImageView
+            android:id="@+id/visibility"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:src="@drawable/visibility"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:contentDescription="@string/password"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/forgotPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginHorizontal="@dimen/_25sdp"
+        android:text="@string/forgotPassword"
+        android:textSize="@dimen/_15ssp"
+        android:textColor="@color/appColor"/>
+
+    <TextView
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_marginHorizontal="@dimen/_25sdp"
+        android:background="@drawable/button_bg3"
+        android:text="@string/login"
+        android:textSize="@dimen/_20ssp"
+        android:textColor="@color/white"
+        android:textAllCaps="true"
+        android:gravity="center"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginHorizontal="@dimen/_25sdp"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/noAccount"
+            android:textColor="@android:color/darker_gray" />
+
+        <TextView
+            android:id="@+id/signUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:text="@string/signUp"
+            android:textColor="@color/appColor" />
+    </LinearLayout>
+
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="@dimen/_15sdp"-->
+<!--        android:layout_marginHorizontal="@dimen/_25sdp"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:gravity="center">-->
+<!--        <View-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="@dimen/_2sdp"-->
+<!--            android:layout_weight="2"-->
+<!--            android:background="@color/black" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginHorizontal="@dimen/_5sdp"-->
+<!--            android:text="@string/app_name"-->
+<!--            android:textColor="@color/appColor"-->
+<!--            android:textSize="@dimen/_20ssp"/>-->
+<!--        <View-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="@dimen/_2sdp"-->
+<!--            android:layout_weight="2"-->
+<!--            android:background="@color/black" />-->
+<!--    </LinearLayout>-->
+
+</LinearLayout>

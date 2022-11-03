@@ -3,4 +3,10 @@
 
     <!--Todo LoginActivity-->
     <string name="login">تسجيل الدخول</string>
+    <string name="email">البريد الإلكتروني</string>
+    <string name="phone">رقم الهاتف</string>
+    <string name="password">كلمة المرور</string>
+    <string name="signUp">إنشاء حساب</string>
+    <string name="noAccount">ليس لديك حساب؟</string>
+    <string name="forgotPassword">هل نسيت كلمة السر؟</string>
 </resources>

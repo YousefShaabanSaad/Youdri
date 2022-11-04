@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/login"
-    tools:context=".activity.registration.LoginActivity">
+    tools:context=".activity.registration.RegistrationActivity">
 
     <LinearLayout
         android:id="@+id/layout"
@@ -48,6 +47,49 @@
                 android:gravity="center"/>
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/nameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginHorizontal="@dimen/_25sdp"
+            android:text="@string/name"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="@dimen/_15ssp"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/nameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginHorizontal="@dimen/_25sdp">
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_40sdp"
+                android:background="@drawable/button_bg2"
+                android:drawableStart="@drawable/name"
+                android:drawablePadding="@dimen/_10sdp"
+                android:textSize="@dimen/_15ssp"
+                android:textColor="@color/appColor"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                tools:ignore="LabelFor" />
+
+            <ImageView
+                android:id="@+id/nameError"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:contentDescription="@string/email"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:id="@+id/emailText"
@@ -93,6 +135,22 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <com.hbb20.CountryCodePicker
+            android:id="@+id/ccp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            app:ccp_autoDetectCountry="true"
+            app:ccp_autoFormatNumber="true"
+            app:ccp_contentColor="@color/appColor"
+            app:ccp_countryPreference="PS"
+            app:ccp_showFlag="true"
+            app:ccp_autoDetectLanguage="true"
+            app:ccp_showFullName="true"
+            android:gravity="center"
+            android:background="@drawable/button_bg"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginHorizontal="@dimen/_25sdp"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/phoneText"
@@ -113,6 +171,7 @@
             android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginHorizontal="@dimen/_25sdp"
             android:visibility="gone">
+
             <EditText
                 android:id="@+id/phone"
                 android:layout_width="match_parent"
@@ -184,51 +243,61 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            android:id="@+id/forgotPassword"
+            android:id="@+id/confirmPasswordText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_15sdp"
             android:layout_marginHorizontal="@dimen/_25sdp"
-            android:text="@string/forgotPassword"
-            android:textSize="@dimen/_15ssp"
-            android:textColor="@color/appColor"/>
+            android:text="@string/confirmPassword"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="@dimen/_15ssp"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginHorizontal="@dimen/_25sdp">
+            <EditText
+                android:id="@+id/confirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_40sdp"
+                android:background="@drawable/button_bg2"
+                android:drawableStart="@drawable/password"
+                android:drawablePadding="@dimen/_10sdp"
+                android:textSize="@dimen/_15ssp"
+                android:textColor="@color/appColor"
+                android:importantForAutofill="no"
+                android:inputType="textPassword"
+                tools:ignore="LabelFor"/>
+
+            <ImageView
+                android:id="@+id/visibility2"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:src="@drawable/visibility"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:contentDescription="@string/password"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Button
-            android:id="@+id/login"
+            android:id="@+id/signUp"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_50sdp"
             android:layout_marginTop="@dimen/_30sdp"
             android:layout_marginHorizontal="@dimen/_25sdp"
             android:background="@drawable/button_bg3"
-            android:text="@string/login"
+            android:text="@string/signUp"
             android:textSize="@dimen/_20ssp"
             android:textColor="@color/white"
             android:textAllCaps="true"
             android:gravity="center"
             android:enabled="false"/>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:layout_marginHorizontal="@dimen/_25sdp"
-            android:orientation="horizontal"
-            android:gravity="center">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/noAccount"
-                android:textColor="@android:color/darker_gray" />
-
-            <TextView
-                android:id="@+id/signUp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_5sdp"
-                android:text="@string/signUp"
-                android:textColor="@color/appColor" />
-        </LinearLayout>
 
     </LinearLayout>
 

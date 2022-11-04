@@ -1,12 +1,46 @@
 <resources>
+    <!--Todo LoginActivity-->
     <string name="app_name" translatable="false">Youdri</string>
+
+    <!--Todo BlockActivity-->
+    <string name="block">Block</string>
+    <string name="blockUser">You have been blocked</string>
+    <string name="whatsapp">Whatsapp</string>
 
     <!--Todo LoginActivity-->
     <string name="login">Login</string>
     <string name="email">Email</string>
     <string name="phone">Phone</string>
     <string name="password">Password</string>
-    <string name="signUp">Sign up</string>
-    <string name="noAccount">Don\'t have an account?</string>
     <string name="forgotPassword">Forgot Password?</string>
+    <string name="noAccount">Don\'t have an account?</string>
+    <string name="signUp">Sign up</string>
+    <string name="emailError">Your email is incorrect</string>
+    <string name="phoneError">Your phone is incorrect</string>
+    <string name="passwordError">Your password is incorrect</string>
+    <string name="userNotExist">User not found</string>
+
+    <!--Todo ForgotPasswordActivity-->
+    <string name="resetPassword">Reset password</string>
+    <string name="checkEmail">Open this email:</string>
+
+    <!--Todo PhoneResetActivity-->
+    <string name="verification">Verification</string>
+    <string name="code">Code is sent to</string>
+    <string name="unSendMessage">Don\'t receive code?</string>
+    <string name="resend">Resend</string>
+    <string name="verify">Verify</string>
+    <string name="enterCode">Enter Verification code</string>
+    <string name="robot">This application must be verify that you are a robot or no?</string>
+    <string name="tryAgainLater">We have blocked all requests from this device due to unusual activity. Try again later.</string>
+    <string name="inValid">The sms verification code is invalid</string>
+    <string name="tryAgain">The sms code has expired. Please re-send the verification code to try again.</string>
+
+
+    <!--Todo RegistrationActivity-->
+    <string name="name">Name</string>
+    <string name="confirmPassword">Confirm password</string>
+    <string name="save">Save</string>
+
+
 </resources>

@@ -1,12 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--Todo BlockActivity-->
+    <string name="block">حظر</string>
+    <string name="blockUser">لقد تم حضرك</string>
+    <string name="whatsapp">واتساب</string>
 
     <!--Todo LoginActivity-->
     <string name="login">تسجيل الدخول</string>
     <string name="email">البريد الإلكتروني</string>
     <string name="phone">رقم الهاتف</string>
     <string name="password">كلمة المرور</string>
-    <string name="signUp">إنشاء حساب</string>
+    <string name="forgotPassword">هل نسيت كلمة المرور؟</string>
     <string name="noAccount">ليس لديك حساب؟</string>
-    <string name="forgotPassword">هل نسيت كلمة السر؟</string>
+    <string name="signUp">إنشاء حساب</string>
+    <string name="emailError">بريدك الإلكتروني غير صحيح</string>
+    <string name="phoneError">رقم الهاتف غير صحيح</string>
+    <string name="passwordError">كلمة المرور غير صحيحه</string>
+    <string name="userNotExist">المستخدم غير موجود</string>
+
+
+    <!--Todo ForgotPasswordActivity-->
+    <string name="resetPassword">إعادة تعيين كلمة المرور</string>
+    <string name="checkEmail">أفتح هذا البريد الإلكتروني:</string>
+
+    <!--Todo PhoneResetActivity-->
+    <string name="verification">التحقق</string>
+    <string name="code">يتم إرسال الرمز إلى</string>
+    <string name="unSendMessage">ألا تتلقى رمزًا؟</string>
+    <string name="resend">إعادة الإرسال</string>
+    <string name="verify">تحقق</string>
+    <string name="enterCode">أدخل رمز التحقق</string>
+    <string name="robot">يجب أن يتحقق هذا التطبيق من أنك روبوت أم لا؟</string>
+    <string name="tryAgainLater">لقد حظرنا جميع الطلبات الواردة من هذا الجهاز بسبب نشاط غير عادي. حاول مرة أخرى في وقت لاحق.</string>
+    <string name="inValid">رمز التحقق من الرسائل القصيرة غير صالح</string>
+    <string name="tryAgain">انتهت صلاحية رمز الرسائل القصيرة. يرجى إعادة إرسال رمز التحقق للمحاولة مرة أخرى.</string>
+
+
+    <!--Todo RegistrationActivity-->
+    <string name="name">الآسم</string>
+    <string name="confirmPassword">تأكيد كلمة السر</string>
+    <string name="save">Save</string>
 </resources>

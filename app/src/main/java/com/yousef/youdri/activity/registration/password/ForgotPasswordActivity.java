@@ -1,21 +1,21 @@
-package com.yousef.youdri.activity.registration;
+package com.yousef.youdri.activity.registration.password;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.text.method.HideReturnsTransformationMethod;
-import android.text.method.PasswordTransformationMethod;
 import android.util.Patterns;
 import android.view.MenuItem;
 import android.view.View;
 import com.yousef.mytoast.MyToast;
 import com.yousef.youdri.R;
-import com.yousef.youdri.activity.registration.password.ForgotPasswordActivity;
+import com.yousef.youdri.activity.registration.LoginActivity;
 import com.yousef.youdri.database.Repository;
-import com.yousef.youdri.databinding.ActivityLoginBinding;
-import com.yousef.youdri.listener.LoginListener;
-import com.yousef.youdri.listener.MainListener;
+import com.yousef.youdri.databinding.ActivityForgotPasswordBinding;
+import com.yousef.youdri.listener.EmailListener;
+import com.yousef.youdri.listener.PhoneListener;
 import com.yousef.youdri.model.Constants;
 import com.yousef.youdri.model.User;
 
@@ -28,17 +28,16 @@ import com.yousef.youdri.model.User;
  * yousefshaabansaad42@gmail.com
  */
 
-public class LoginActivity extends AppCompatActivity implements LoginListener, MainListener {
+public class ForgotPasswordActivity extends AppCompatActivity implements EmailListener, PhoneListener {
 
-    private ActivityLoginBinding binding;
+    private ActivityForgotPasswordBinding binding;
     private Repository repository;
-    private String status, visibility;
-    private boolean isEmail, isPhone, isPassword;
+    private String status;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityLoginBinding.inflate(getLayoutInflater());
+        binding = ActivityForgotPasswordBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         repository = new Repository(this);
@@ -62,10 +61,6 @@ public class LoginActivity extends AppCompatActivity implements LoginListener, M
 
     void handlingView(){
         status = Constants.EMAIL;
-        visibility = Constants.HIDE;
-        isEmail = false;
-        isPhone = false;
-        isPassword = false;
 
         binding.emailBtn.setOnClickListener(v -> {
             if(!status.equals(Constants.EMAIL)){
@@ -74,6 +69,7 @@ public class LoginActivity extends AppCompatActivity implements LoginListener, M
                 status = Constants.EMAIL;
                 binding.emailText.setVisibility(View.VISIBLE);
                 binding.emailLayout.setVisibility(View.VISIBLE);
+                binding.ccp.setVisibility(View.GONE);
                 binding.phoneText.setVisibility(View.GONE);
                 binding.phoneLayout.setVisibility(View.GONE);
                 binding.login.setEnabled(false);
@@ -87,22 +83,10 @@ public class LoginActivity extends AppCompatActivity implements LoginListener, M
                 status = Constants.PHONE;
                 binding.emailText.setVisibility(View.GONE);
                 binding.emailLayout.setVisibility(View.GONE);
+                binding.ccp.setVisibility(View.VISIBLE);
                 binding.phoneText.setVisibility(View.VISIBLE);
                 binding.phoneLayout.setVisibility(View.VISIBLE);
                 binding.login.setEnabled(false);
-            }
-        });
-
-        binding.visibility.setOnClickListener(v -> {
-            if(visibility.equals(Constants.HIDE)){
-                binding.password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                binding.visibility.setImageResource(R.drawable.visibility_off);
-                visibility = Constants.SHOW;
-            }
-            else  if(visibility.equals(Constants.SHOW)){
-                binding.password.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                binding.visibility.setImageResource(R.drawable.visibility);
-                visibility = Constants.HIDE;
             }
         });
 
@@ -116,13 +100,10 @@ public class LoginActivity extends AppCompatActivity implements LoginListener, M
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(Patterns.EMAIL_ADDRESS.matcher(binding.email.getText().toString()).matches()){
                     binding.emailError.setImageResource(com.yousef.mytoast.R.drawable.success);
-                    isEmail = true;
-                    if(isPassword)
-                        binding.login.setEnabled(true);
+                    binding.login.setEnabled(true);
                 }
                 else{
                     binding.emailError.setImageResource(com.yousef.mytoast.R.drawable.error);
-                    isEmail = false;
                     binding.login.setEnabled(false);
                 }
             }
@@ -143,13 +124,10 @@ public class LoginActivity extends AppCompatActivity implements LoginListener, M
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(Patterns.PHONE.matcher(binding.phone.getText().toString()).matches()){
                     binding.phoneError.setImageResource(com.yousef.mytoast.R.drawable.success);
-                    isPhone = true;
-                    if(isPassword)
-                        binding.login.setEnabled(true);
+                    binding.login.setEnabled(true);
                 }
                 else{
                     binding.phoneError.setImageResource(com.yousef.mytoast.R.drawable.error);
-                    isPhone = false;
                     binding.login.setEnabled(false);
                 }
             }
@@ -159,52 +137,19 @@ public class LoginActivity extends AppCompatActivity implements LoginListener, M
 
             }
         });
-
-        binding.password.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(binding.password.getText().toString().length() >= 6){
-                    isPassword = true;
-                    if( (isEmail && status.equals(Constants.EMAIL)) || (isPhone && status.equals(Constants.PHONE)) )
-                        binding.login.setEnabled(true);
-                }
-                else{
-                    isPassword = false;
-                    binding.login.setEnabled(false);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
-        binding.forgotPassword.setOnClickListener(v ->
-            repository.setIntent(ForgotPasswordActivity.class)
-        );
 
         binding.login.setOnClickListener(v -> {
             if(repository.isDisconnect())
                 repository.showDisconnectDialog();
             else if(status.equals( Constants.EMAIL)) {
                 setVisibility(0.5f, View.VISIBLE);
-                repository.signInWithEmail(binding.email.getText().toString(), binding.password.getText().toString(), this);
+                repository.resetPasswordWithEmail(binding.email.getText().toString(), this);
             }
             else if(status.equals( Constants.PHONE)){
                 setVisibility(0.5f, View.VISIBLE);
-                repository.signInWithPhone(binding.phone.getText().toString(), binding.password.getText().toString(), this);
+                repository.checkPhone(binding.phone.getText().toString(), this);
             }
         });
-
-        binding.signUp.setOnClickListener(v ->
-            repository.setIntent(RegistrationActivity.class)
-        );
     }
 
     void setVisibility(float alpha, int visible){
@@ -212,61 +157,40 @@ public class LoginActivity extends AppCompatActivity implements LoginListener, M
         binding.layout.setAlpha(alpha);
     }
 
+
     @Override
-    public void onSuccess(String text) {
-        if(text.equals(Constants.NULL)){
-            setVisibility(1f, View.GONE);
-            MyToast.setLongToast(this, getString(R.string.userNotExist), MyToast.FAIL);
-        }
-        else
-            repository.getUser(LoginActivity.this);
+    public void sendResetPassword() {
+        MyToast.setLongToast(this, getString(R.string.checkEmail) + " " + binding.email.getText().toString(), MyToast.SUCCESS);
+        repository.setIntent(LoginActivity.class);
+        finishAffinity();
     }
 
     @Override
-    public void onFailureEmail(String error) {
+    public void fail(String error) {
         setVisibility(1f, View.GONE);
-
-        if(error.contains("There is no user")) {
+        if(error.equals("There is no user record corresponding to this identifier. The user may have been deleted."))
             MyToast.setLongToast(this, getString(R.string.emailError), MyToast.FAIL);
-        }
-        else if(error.contains("The password is invalid")) {
-            MyToast.setLongToast(this, getString(R.string.passwordError), MyToast.FAIL);
-        }
         else
             MyToast.setLongToast(this, error, MyToast.FAIL);
     }
 
     @Override
-    public void onFailurePhone(String error) {
-        setVisibility(1f, View.GONE);
-        MyToast.setLongToast(this, getString(R.string.phoneError), MyToast.FAIL);
+    public void onSuccess(User user) {
+        Intent intent = new Intent(getApplicationContext(), PhoneResetActivity.class);
+        intent.putExtra(Constants.CODE, binding.ccp.getSelectedCountryNameCode());
+        intent.putExtra(Constants.PHONE, binding.phone.getText().toString());
+        intent.putExtra(Constants.EMAIL, user.getEmail());
+        intent.putExtra(Constants.PASSWORD, user.getPassword());
+        startActivity(intent);
+        finish();
     }
 
     @Override
-    public void getUser(User user) {
-        if (user.getStatus() != null ) {
-            if(!user.getPassword().equals(binding.password.getText().toString())){
-                repository.updatePasswordUser(binding.password.getText().toString());
-            }
-            if (user.getStatus().equals(Constants.BLOCK)) {
-                repository.setIntent(BlockActivity.class);
-                finish();
-            }
-            else if (user.getStatus().equals(Constants.ACTIVE)) {
-                //repository.setIntent(HomeActivity.class);
-                finish();
-            }
-        }
-        else {
-            setVisibility(1f, View.GONE);
-            MyToast.setLongToast(this, getString(R.string.userNotExist), MyToast.FAIL);
-            repository.signOut();
-        }
-    }
-
-    @Override
-    public void fail(String error) {
-        repository.signOut();
+    public void onFailure(String error) {
         setVisibility(1f, View.GONE);
+        if(error.equals(Constants.NULL))
+            MyToast.setLongToast(this, getString(R.string.phoneError), MyToast.FAIL);
+        else
+            MyToast.setLongToast(this, error, MyToast.FAIL);
     }
 }

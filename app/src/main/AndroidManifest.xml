@@ -14,9 +14,25 @@
         android:theme="@style/Theme.Youdri"
         tools:targetApi="31">
         <activity
+            android:name=".activity.home.HomeActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Youdri.NoActionBar"/>
+        <activity
+            android:name=".activity.registration.EmailVerificationActivity"
+            android:exported="false"
+            android:label="@string/email" />
+        <activity
+            android:name=".activity.registration.PhoneVerificationActivity"
+            android:exported="false"
+            android:label="@string/verification" />
+        <activity
+            android:name=".activity.registration.RegistrationActivity"
+            android:exported="false"
+            android:label="@string/signUp" />
+        <activity
             android:name=".activity.registration.password.ResetPasswordActivity"
-            android:label="@string/resetPassword"
-            android:exported="false" />
+            android:exported="false"
+            android:label="@string/resetPassword" />
         <activity
             android:name=".activity.registration.password.PhoneResetActivity"
             android:exported="false"
@@ -25,10 +41,6 @@
             android:name=".activity.registration.password.ForgotPasswordActivity"
             android:exported="false"
             android:label="@string/resetPassword" />
-        <activity
-            android:name=".activity.registration.RegistrationActivity"
-            android:exported="false"
-            android:label="@string/signUp" />
         <activity
             android:name=".activity.registration.BlockActivity"
             android:exported="false"
@@ -39,7 +51,8 @@
             android:label="@string/login" />
         <activity
             android:name=".activity.registration.MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.Youdri.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

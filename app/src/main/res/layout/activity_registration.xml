@@ -4,19 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login"
     tools:context=".activity.registration.RegistrationActivity">
 
     <LinearLayout
         android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
         android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100sdp"
+            android:src="@drawable/registration"
+            android:contentDescription="@string/login"/>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_50sdp"
+            android:layout_height="@dimen/_40sdp"
             android:layout_marginTop="@dimen/_15sdp"
             android:background="@drawable/button_bg"
             android:layout_marginHorizontal="@dimen/_25sdp"
@@ -47,22 +51,11 @@
                 android:gravity="center"/>
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/nameText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:layout_marginHorizontal="@dimen/_25sdp"
-            android:text="@string/name"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:textSize="@dimen/_15ssp"/>
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/nameLayout"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_50sdp"
-            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_15sdp"
             android:layout_marginHorizontal="@dimen/_25sdp">
             <EditText
                 android:id="@+id/name"
@@ -73,6 +66,8 @@
                 android:background="@drawable/button_bg2"
                 android:drawableStart="@drawable/name"
                 android:drawablePadding="@dimen/_10sdp"
+                android:hint="@string/name"
+                android:textColorHint="@android:color/darker_gray"
                 android:textSize="@dimen/_15ssp"
                 android:textColor="@color/appColor"
                 android:importantForAutofill="no"
@@ -91,22 +86,11 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
-            android:id="@+id/emailText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:layout_marginHorizontal="@dimen/_25sdp"
-            android:text="@string/email"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:textSize="@dimen/_15ssp"/>
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/emailLayout"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_50sdp"
-            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_15sdp"
             android:layout_marginHorizontal="@dimen/_25sdp">
             <EditText
                 android:id="@+id/email"
@@ -118,6 +102,8 @@
                 android:drawableStart="@drawable/email"
                 android:drawablePadding="@dimen/_10sdp"
                 android:textSize="@dimen/_15ssp"
+                android:hint="@string/email"
+                android:textColorHint="@android:color/darker_gray"
                 android:textColor="@color/appColor"
                 android:importantForAutofill="no"
                 android:inputType="textEmailAddress"
@@ -138,7 +124,7 @@
         <com.hbb20.CountryCodePicker
             android:id="@+id/ccp"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_50sdp"
+            android:layout_height="@dimen/_40sdp"
             app:ccp_autoDetectCountry="true"
             app:ccp_autoFormatNumber="true"
             app:ccp_contentColor="@color/appColor"
@@ -152,23 +138,11 @@
             android:layout_marginHorizontal="@dimen/_25sdp"
             android:visibility="gone"/>
 
-        <TextView
-            android:id="@+id/phoneText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:layout_marginHorizontal="@dimen/_25sdp"
-            android:text="@string/phone"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:textSize="@dimen/_15ssp"
-            android:visibility="gone"/>
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/phoneLayout"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_50sdp"
-            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_15sdp"
             android:layout_marginHorizontal="@dimen/_25sdp"
             android:visibility="gone">
 
@@ -182,6 +156,8 @@
                 android:drawableStart="@drawable/phone"
                 android:drawablePadding="@dimen/_10sdp"
                 android:textSize="@dimen/_15ssp"
+                android:hint="@string/phone"
+                android:textColorHint="@android:color/darker_gray"
                 android:textColor="@color/appColor"
                 android:importantForAutofill="no"
                 android:inputType="phone"
@@ -199,21 +175,10 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
-            android:id="@+id/passwordText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:layout_marginHorizontal="@dimen/_25sdp"
-            android:text="@string/password"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:textSize="@dimen/_15ssp"/>
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_50sdp"
-            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_15sdp"
             android:layout_marginHorizontal="@dimen/_25sdp">
             <EditText
                 android:id="@+id/password"
@@ -225,6 +190,8 @@
                 android:drawableStart="@drawable/password"
                 android:drawablePadding="@dimen/_10sdp"
                 android:textSize="@dimen/_15ssp"
+                android:hint="@string/password"
+                android:textColorHint="@android:color/darker_gray"
                 android:textColor="@color/appColor"
                 android:importantForAutofill="no"
                 android:inputType="textPassword"
@@ -242,21 +209,10 @@
                 android:contentDescription="@string/password"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
-            android:id="@+id/confirmPasswordText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:layout_marginHorizontal="@dimen/_25sdp"
-            android:text="@string/confirmPassword"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:textSize="@dimen/_15ssp"/>
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_50sdp"
-            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_15sdp"
             android:layout_marginHorizontal="@dimen/_25sdp">
             <EditText
                 android:id="@+id/confirmPassword"
@@ -268,6 +224,8 @@
                 android:drawableStart="@drawable/password"
                 android:drawablePadding="@dimen/_10sdp"
                 android:textSize="@dimen/_15ssp"
+                android:hint="@string/confirmPassword"
+                android:textColorHint="@android:color/darker_gray"
                 android:textColor="@color/appColor"
                 android:importantForAutofill="no"
                 android:inputType="textPassword"
@@ -285,16 +243,37 @@
                 android:contentDescription="@string/password"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <LinearLayout
+            android:id="@+id/privacyPolicyLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="@dimen/_25sdp">
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/privacyPolicyCheck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/privacyPolicy" />
+
+            <TextView
+                android:id="@+id/privacyPolicy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/privacyPolicy2"
+                android:textColor="@color/appColor"
+                android:layout_marginStart="@dimen/_5sdp"/>
+        </LinearLayout>
+
         <Button
             android:id="@+id/signUp"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_50sdp"
+            android:layout_height="@dimen/_40sdp"
             android:layout_marginTop="@dimen/_30sdp"
             android:layout_marginHorizontal="@dimen/_25sdp"
             android:background="@drawable/button_bg3"
             android:text="@string/signUp"
-            android:textSize="@dimen/_20ssp"
-            android:textColor="@color/white"
+            android:textSize="@dimen/_15ssp"
+            android:textColor="@color/stayWhite"
             android:textAllCaps="true"
             android:gravity="center"
             android:enabled="false"/>

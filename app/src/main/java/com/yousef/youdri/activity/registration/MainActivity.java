@@ -3,6 +3,7 @@ package com.yousef.youdri.activity.registration;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.yousef.youdri.R;
+import com.yousef.youdri.activity.home.HomeActivity;
 import com.yousef.youdri.database.Repository;
 import com.yousef.youdri.listener.MainListener;
 import com.yousef.youdri.model.Constants;
@@ -20,20 +21,36 @@ import com.yousef.youdri.model.User;
 public class MainActivity extends AppCompatActivity implements MainListener {
 
     private Repository repository;
+    private boolean isPause;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         repository = new Repository(this);
+    }
 
+    private void init(){
+        if(repository.getFirebaseUser() == null) {
+            repository.setIntent(LoginActivity.class);
+            finish();
+        }
+        else
+            repository.getUser(MainActivity.this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        isPause = false;
         new Thread(){
             @Override
             public void run() {
                 super.run();
                 try {
                     sleep(1000);
-                    init();
+                    if(!isPause)
+                        init();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -41,12 +58,10 @@ public class MainActivity extends AppCompatActivity implements MainListener {
         }.start();
     }
 
-    private void init(){
-        if(repository.getFirebaseUser() == null)
-            repository.setIntent(LoginActivity.class);
-        else
-            repository.getUser(MainActivity.this);
-        finish();
+    @Override
+    protected void onPause() {
+        super.onPause();
+        isPause = true;
     }
 
     @Override
@@ -56,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements MainListener {
                 repository.setIntent(BlockActivity.class);
                 finish();
             } else if (user.getStatus().equals(Constants.ACTIVE)) {
-                //repository.setIntent(getApplicationContext(), HomeActivity.class);
+                repository.setIntent(HomeActivity.class);
                 finish();
             }
         }

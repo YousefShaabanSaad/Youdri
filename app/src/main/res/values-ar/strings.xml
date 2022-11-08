@@ -35,9 +35,27 @@
     <string name="inValid">رمز التحقق من الرسائل القصيرة غير صالح</string>
     <string name="tryAgain">انتهت صلاحية رمز الرسائل القصيرة. يرجى إعادة إرسال رمز التحقق للمحاولة مرة أخرى.</string>
 
+    <!--Todo ResetPasswordActivity-->
+    <string name="newPassword">كلمة السر الجديدة</string>
+    <string name="confirmNewPassword">تأكيد كلمة السر الجديدة</string>
 
     <!--Todo RegistrationActivity-->
     <string name="name">الآسم</string>
     <string name="confirmPassword">تأكيد كلمة السر</string>
-    <string name="save">Save</string>
+    <string name="privacyPolicy">أوافق على</string>
+    <string name="privacyPolicy2">شروط الخدمة وسياسة الخصوصية</string>
+    <string name="privacyPolicy4">شروط الخدمة وسياسة الخصوصية</string>
+    <string name="privacyPolicyError">يجب أن توافق على شروط الخدمة وسياسة الخصوصية</string>
+    <string name="emailSend">افتح هذا البريد الإلكتروني</string>
+    <string name="emailOpen">افتح بريدك الإلكتروني ثم انقر على رابط التحقق</string>
+    <string name="phoneExist">تم استخدام رقم الهاتف بالفعل من قبل حساب آخر.</string>
+    <string name="emailExist">تم استخدام عنوان البريد الإلكتروني بالفعل من قبل حساب آخر.</string>
+    <string name="save">حفظ</string>
+
+    <!--Todo HomeActivity-->
+    <string name="home">الصفحة الرئيسية</string>
+    <string name="cart">العربة</string>
+    <string name="profile">الصفحة الشخصية</string>
+    <string name="list">القوائم</string>
+    <string name="search">البحث في Youdri</string>
 </resources>

@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Youdri/Youdri/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1625" />
+        <entry key="..\:/Youdri/Youdri/app/src/main/res/drawable/background_dialog.xml" value="0.1625" />
         <entry key="..\:/Youdri/Youdri/app/src/main/res/drawable/block.xml" value="0.1625" />
         <entry key="..\:/Youdri/Youdri/app/src/main/res/drawable/button_bg.xml" value="0.1625" />
         <entry key="..\:/Youdri/Youdri/app/src/main/res/drawable/button_bg2.xml" value="0.1625" />
@@ -11,24 +12,37 @@
         <entry key="..\:/Youdri/Youdri/app/src/main/res/drawable/button_bg4.xml" value="0.1625" />
         <entry key="..\:/Youdri/Youdri/app/src/main/res/drawable/button_bg5.xml" value="0.1625" />
         <entry key="..\:/Youdri/Youdri/app/src/main/res/drawable/button_bg6.xml" value="0.1625" />
+        <entry key="..\:/Youdri/Youdri/app/src/main/res/drawable/cart.xml" value="0.1625" />
         <entry key="..\:/Youdri/Youdri/app/src/main/res/drawable/email.xml" value="0.1625" />
+        <entry key="..\:/Youdri/Youdri/app/src/main/res/drawable/forgot_password.xml" value="0.1625" />
+        <entry key="..\:/Youdri/Youdri/app/src/main/res/drawable/home.xml" value="0.1625" />
         <entry key="..\:/Youdri/Youdri/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1625" />
         <entry key="..\:/Youdri/Youdri/app/src/main/res/drawable/login.xml" value="0.1625" />
         <entry key="..\:/Youdri/Youdri/app/src/main/res/drawable/name.xml" value="0.1625" />
         <entry key="..\:/Youdri/Youdri/app/src/main/res/drawable/num_bg.xml" value="0.1625" />
         <entry key="..\:/Youdri/Youdri/app/src/main/res/drawable/password.xml" value="0.1625" />
         <entry key="..\:/Youdri/Youdri/app/src/main/res/drawable/phone.xml" value="0.1625" />
+        <entry key="..\:/Youdri/Youdri/app/src/main/res/drawable/registration.xml" value="0.1625" />
+        <entry key="..\:/Youdri/Youdri/app/src/main/res/drawable/search.xml" value="0.1625" />
         <entry key="..\:/Youdri/Youdri/app/src/main/res/drawable/sms.xml" value="0.1625" />
         <entry key="..\:/Youdri/Youdri/app/src/main/res/drawable/visibility.xml" value="0.1625" />
         <entry key="..\:/Youdri/Youdri/app/src/main/res/drawable/visibility_off.xml" value="0.1625" />
         <entry key="..\:/Youdri/Youdri/app/src/main/res/drawable/whatsapp.xml" value="0.1625" />
         <entry key="..\:/Youdri/Youdri/app/src/main/res/layout/activity_block.xml" value="0.1675929884566054" />
-        <entry key="..\:/Youdri/Youdri/app/src/main/res/layout/activity_forgot_password.xml" value="0.25" />
-        <entry key="..\:/Youdri/Youdri/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/Youdri/Youdri/app/src/main/res/layout/activity_email_verification.xml" value="0.17192982456140352" />
+        <entry key="..\:/Youdri/Youdri/app/src/main/res/layout/activity_forgot_password.xml" value="0.22" />
+        <entry key="..\:/Youdri/Youdri/app/src/main/res/layout/activity_home.xml" value="0.17192982456140352" />
+        <entry key="..\:/Youdri/Youdri/app/src/main/res/layout/activity_login.xml" value="0.17192982456140352" />
         <entry key="..\:/Youdri/Youdri/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Youdri/Youdri/app/src/main/res/layout/activity_phone_reset.xml" value="0.2" />
-        <entry key="..\:/Youdri/Youdri/app/src/main/res/layout/activity_registration.xml" value="0.2" />
+        <entry key="..\:/Youdri/Youdri/app/src/main/res/layout/activity_registration.xml" value="0.25" />
         <entry key="..\:/Youdri/Youdri/app/src/main/res/layout/activity_reset_password.xml" value="0.16417272338606242" />
+        <entry key="..\:/Youdri/Youdri/app/src/main/res/layout/fragment_cart.xml" value="0.17192982456140352" />
+        <entry key="..\:/Youdri/Youdri/app/src/main/res/layout/fragment_home.xml" value="0.17192982456140352" />
+        <entry key="..\:/Youdri/Youdri/app/src/main/res/layout/fragment_list.xml" value="0.17192982456140352" />
+        <entry key="..\:/Youdri/Youdri/app/src/main/res/layout/fragment_profile.xml" value="0.17192982456140352" />
+        <entry key="..\:/Youdri/Youdri/app/src/main/res/layout/policy.xml" value="0.17192982456140352" />
+        <entry key="..\:/Youdri/Youdri/app/src/main/res/menu/bottom_nav_menu.xml" value="0.17192982456140352" />
         <entry key="..\:/Youdri/Youdri/app/src/main/res/mipmap-anydpi-v26/ic_logo.xml" value="0.1625" />
         <entry key="..\:/Youdri/Youdri/app/src/main/res/mipmap-anydpi-v26/ic_logo_round.xml" value="0.1625" />
       </map>

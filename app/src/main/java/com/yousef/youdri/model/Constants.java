@@ -23,8 +23,12 @@ public class Constants {
     public final static String USERS = "Users";
     public static final String NULL = "null";
     public static final String PASSWORD = "password";
+    public static final String ARABIC = "العربية";
 
     //Todo RegistrationActivity
     public static final String NAME = "name";
-    public static final String CODE = "Code";
+    public static final String CODE = "code";
+    public static final String DONE = "done";
+    public static final String PRIVACY_POLICY = "Privacy Policy";
+    public static final String PRIVACY_POLICY_ID = "26lHL9fIXyZyvRYPOdEn";
 }

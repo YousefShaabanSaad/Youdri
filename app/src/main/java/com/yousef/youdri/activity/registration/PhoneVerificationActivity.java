@@ -1,26 +1,28 @@
-package com.yousef.youdri.activity.registration.password;
+package com.yousef.youdri.activity.registration;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
+import androidx.appcompat.app.AppCompatActivity;
 import com.yousef.mytoast.MyToast;
 import com.yousef.youdri.R;
+import com.yousef.youdri.activity.home.HomeActivity;
 import com.yousef.youdri.database.Repository;
 import com.yousef.youdri.databinding.ActivityPhoneResetBinding;
+import com.yousef.youdri.listener.EmailListener;
 import com.yousef.youdri.listener.VerifyListener;
 import com.yousef.youdri.model.Constants;
+import com.yousef.youdri.model.User;
 
-public class PhoneResetActivity extends AppCompatActivity implements VerifyListener {
+public class PhoneVerificationActivity extends AppCompatActivity implements VerifyListener, EmailListener {
 
     private ActivityPhoneResetBinding binding;
     private Repository repository;
-    private String phone, email, password, verificationId;
+    private String verificationId;
     private boolean isOne, isTwo, isThree, isFour, isFive, isSix;
+    private User user;
 
 
     @Override
@@ -30,6 +32,7 @@ public class PhoneResetActivity extends AppCompatActivity implements VerifyListe
         setContentView(binding.getRoot());
 
         repository = new Repository(this);
+        user = new User();
         init();
         handlingEditText();
     }
@@ -38,25 +41,28 @@ public class PhoneResetActivity extends AppCompatActivity implements VerifyListe
         if(getSupportActionBar() != null)
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        phone = getIntent().getExtras().getString(Constants.PHONE);
-        email = getIntent().getExtras().getString(Constants.EMAIL);
-        password = getIntent().getExtras().getString(Constants.PASSWORD);
+        user.setName(getIntent().getExtras().getString(Constants.NAME));
+        user.setEmail(getIntent().getExtras().getString(Constants.PHONE)+"@gmail.com");
+        user.setPassword(getIntent().getExtras().getString(Constants.PASSWORD));
+        user.setPhone(getIntent().getExtras().getString(Constants.PHONE));
+        user.setStatus(Constants.ACTIVE);
+
         String code = getIntent().getExtras().getString(Constants.CODE);
 
         StringBuilder text= new StringBuilder();
-        for(int i=0; i<phone.length(); i++){
-            if(i < phone.length()-2)
+        for(int i=0; i<user.getPhone().length(); i++){
+            if(i < user.getPhone().length()-2)
                 text.append('*');
             else
-                text.append(phone.charAt(i));
+                text.append(user.getPhone().charAt(i));
         }
         binding.phone.setText(text.toString());
         verificationId = "";
 
-        repository.startPhoneNumberVerification(code, phone, this, this);
+        repository.startPhoneNumberVerification(code, user.getPhone(), this, this);
 
         binding.resend.setOnClickListener(view ->
-                repository.startPhoneNumberVerification(code, phone, this, this)
+                repository.startPhoneNumberVerification(code, user.getPhone(), this, this)
         );
         binding.verify.setOnClickListener(view ->
                 verify()
@@ -227,9 +233,7 @@ public class PhoneResetActivity extends AppCompatActivity implements VerifyListe
         String total = binding.number1.getText().toString() + binding.number2.getText().toString() +
                 binding.number3.getText().toString() + binding.number4.getText().toString() +
                 binding.number5.getText().toString() + binding.number6.getText().toString();
-        if (total.length() != 6)
-            MyToast.setLongToast(this, getString(R.string.enterCode), MyToast.FAIL);
-        else if(repository.isDisconnect())
+        if(repository.isDisconnect())
             repository.showDisconnectDialog();
         else {
             setVisibility(0.5f, View.VISIBLE);
@@ -255,11 +259,7 @@ public class PhoneResetActivity extends AppCompatActivity implements VerifyListe
     @Override
     public void onSuccess() {
         repository.signOut();
-        Intent intent= new Intent(getApplicationContext(), ResetPasswordActivity.class);
-        intent.putExtra(Constants.EMAIL, email);
-        intent.putExtra(Constants.PASSWORD, password);
-        startActivity(intent);
-        finish();
+        repository.createUserByPhone(user, this);
     }
 
     @Override
@@ -271,5 +271,16 @@ public class PhoneResetActivity extends AppCompatActivity implements VerifyListe
             MyToast.setLongToast(this, getString(R.string.tryAgain), MyToast.FAIL);
         else
             MyToast.setLongToast(this, error, MyToast.FAIL);
+    }
+
+    @Override
+    public void sendResetPassword() {
+        repository.setIntent(HomeActivity.class);
+        finishAffinity();
+    }
+
+    @Override
+    public void fail(String error) {
+        MyToast.setLongToast(this, error, MyToast.FAIL);
     }
 }

@@ -7,4 +7,6 @@
 
     <color name="white">#FF000000</color>
     <color name="stayWhite">#FFFFFFFF</color>
+
+    <color name="hint">#FFF4E7</color>
 </resources>

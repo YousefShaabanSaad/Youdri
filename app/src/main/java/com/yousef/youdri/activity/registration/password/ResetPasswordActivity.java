@@ -83,6 +83,7 @@ public class ResetPasswordActivity extends AppCompatActivity implements EmailLis
             }
         });
 
+
         binding.password.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -92,9 +93,19 @@ public class ResetPasswordActivity extends AppCompatActivity implements EmailLis
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(binding.password.getText().toString().length() >= 6){
-                    isPassword = true;
-                    if(isConfirmPassword)
+                    if(binding.confirmPassword.getText().toString().length() == 0) {
+                        isPassword = true;
+                        if (isConfirmPassword)
+                            binding.save.setEnabled(true);
+                    }
+                    else if(binding.password.getText().toString().equals(binding.confirmPassword.getText().toString())){
+                        isPassword = true;
                         binding.save.setEnabled(true);
+                    }
+                    else {
+                        isPassword = false;
+                        binding.save.setEnabled(false);
+                    }
                 }
                 else{
                     isPassword = false;
@@ -118,8 +129,7 @@ public class ResetPasswordActivity extends AppCompatActivity implements EmailLis
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(binding.confirmPassword.getText().toString().length() >= 6 && binding.password.getText().toString().equals(binding.confirmPassword.getText().toString())){
                     isConfirmPassword = true;
-                    if(isPassword)
-                        binding.save.setEnabled(true);
+                    binding.save.setEnabled(true);
                 }
                 else{
                     isConfirmPassword = false;

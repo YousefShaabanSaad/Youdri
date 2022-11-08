@@ -40,7 +40,26 @@
     <!--Todo RegistrationActivity-->
     <string name="name">Name</string>
     <string name="confirmPassword">Confirm password</string>
+    <string name="privacyPolicy">I agree to</string>
+    <string name="privacyPolicy2">the Terms of Service and Privacy Policy</string>
+    <string name="privacyPolicy4">Terms of Service and Privacy Policy</string>
+    <string name="privacyPolicyError">You must agree to the Terms of Service and Privacy Policy</string>
+    <string name="emailSend">Open this email</string>
+    <string name="emailOpen">Open your email then click on the verification link</string>
+    <string name="phoneExist">The phone number has already been used by another account.</string>
+    <string name="emailExist">The email address has already been used by another account.</string>
     <string name="save">Save</string>
 
+
+    <!--Todo ResetPasswordActivity-->
+    <string name="newPassword">New password</string>
+    <string name="confirmNewPassword">Confirm new password</string>
+
+    <!--Todo HomeActivity-->
+    <string name="home">Home</string>
+    <string name="cart">Cart</string>
+    <string name="profile">Profile</string>
+    <string name="list">Lists</string>
+    <string name="search">Search in Youdri</string>
 
 </resources>

@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import com.yousef.mytoast.MyToast;
 import com.yousef.youdri.R;
+import com.yousef.youdri.activity.home.HomeActivity;
 import com.yousef.youdri.activity.registration.password.ForgotPasswordActivity;
 import com.yousef.youdri.database.Repository;
 import com.yousef.youdri.databinding.ActivityLoginBinding;
@@ -67,14 +68,19 @@ public class LoginActivity extends AppCompatActivity implements LoginListener, M
         isPhone = false;
         isPassword = false;
 
+        if(getIntent().getExtras() != null){
+            binding.email.setText(getIntent().getExtras().getString(Constants.EMAIL));
+            binding.password.setText(getIntent().getExtras().getString(Constants.PASSWORD));
+            binding.emailError.setImageResource(com.yousef.mytoast.R.drawable.success);
+            binding.login.setEnabled(true);
+        }
+
         binding.emailBtn.setOnClickListener(v -> {
             if(!status.equals(Constants.EMAIL)){
                 binding.emailBtn.setBackgroundResource(R.drawable.button_bg4);
                 binding.phoneBtn.setBackgroundResource(R.drawable.button_bg5);
                 status = Constants.EMAIL;
-                binding.emailText.setVisibility(View.VISIBLE);
                 binding.emailLayout.setVisibility(View.VISIBLE);
-                binding.phoneText.setVisibility(View.GONE);
                 binding.phoneLayout.setVisibility(View.GONE);
                 binding.login.setEnabled(false);
             }
@@ -85,9 +91,7 @@ public class LoginActivity extends AppCompatActivity implements LoginListener, M
                 binding.emailBtn.setBackgroundResource(R.drawable.button_bg5);
                 binding.phoneBtn.setBackgroundResource(R.drawable.button_bg4);
                 status = Constants.PHONE;
-                binding.emailText.setVisibility(View.GONE);
                 binding.emailLayout.setVisibility(View.GONE);
-                binding.phoneText.setVisibility(View.VISIBLE);
                 binding.phoneLayout.setVisibility(View.VISIBLE);
                 binding.login.setEnabled(false);
             }
@@ -253,8 +257,25 @@ public class LoginActivity extends AppCompatActivity implements LoginListener, M
                 finish();
             }
             else if (user.getStatus().equals(Constants.ACTIVE)) {
-                //repository.setIntent(HomeActivity.class);
-                finish();
+                if(status.equals(Constants.EMAIL)) {
+                    if (repository.getFirebaseUser().isEmailVerified()) {
+                        repository.setIntent(HomeActivity.class);
+                        finish();
+                    } else if(user.getPhone().equals(Constants.NULL)){
+                        setVisibility(1f, View.GONE);
+                        repository.signOut();
+                        MyToast.setLongToast(this, getString(R.string.emailOpen), MyToast.FAIL);
+                    }
+                    else{
+                        setVisibility(1f, View.GONE);
+                        MyToast.setLongToast(this, getString(R.string.emailError), MyToast.FAIL);
+                        repository.signOut();
+                    }
+                }
+                else if(status.equals(Constants.PHONE)){
+                    repository.setIntent(HomeActivity.class);
+                    finish();
+                }
             }
         }
         else {

@@ -11,7 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 import com.yousef.mytoast.MyToast;
 import com.yousef.youdri.R;
-import com.yousef.youdri.activity.registration.LoginActivity;
 import com.yousef.youdri.database.Repository;
 import com.yousef.youdri.databinding.ActivityForgotPasswordBinding;
 import com.yousef.youdri.listener.EmailListener;
@@ -67,10 +66,8 @@ public class ForgotPasswordActivity extends AppCompatActivity implements EmailLi
                 binding.emailBtn.setBackgroundResource(R.drawable.button_bg4);
                 binding.phoneBtn.setBackgroundResource(R.drawable.button_bg5);
                 status = Constants.EMAIL;
-                binding.emailText.setVisibility(View.VISIBLE);
                 binding.emailLayout.setVisibility(View.VISIBLE);
                 binding.ccp.setVisibility(View.GONE);
-                binding.phoneText.setVisibility(View.GONE);
                 binding.phoneLayout.setVisibility(View.GONE);
                 binding.login.setEnabled(false);
             }
@@ -81,10 +78,8 @@ public class ForgotPasswordActivity extends AppCompatActivity implements EmailLi
                 binding.emailBtn.setBackgroundResource(R.drawable.button_bg5);
                 binding.phoneBtn.setBackgroundResource(R.drawable.button_bg4);
                 status = Constants.PHONE;
-                binding.emailText.setVisibility(View.GONE);
                 binding.emailLayout.setVisibility(View.GONE);
                 binding.ccp.setVisibility(View.VISIBLE);
-                binding.phoneText.setVisibility(View.VISIBLE);
                 binding.phoneLayout.setVisibility(View.VISIBLE);
                 binding.login.setEnabled(false);
             }
@@ -161,8 +156,7 @@ public class ForgotPasswordActivity extends AppCompatActivity implements EmailLi
     @Override
     public void sendResetPassword() {
         MyToast.setLongToast(this, getString(R.string.checkEmail) + " " + binding.email.getText().toString(), MyToast.SUCCESS);
-        repository.setIntent(LoginActivity.class);
-        finishAffinity();
+        onBackPressed();
     }
 
     @Override
@@ -177,7 +171,7 @@ public class ForgotPasswordActivity extends AppCompatActivity implements EmailLi
     @Override
     public void onSuccess(User user) {
         Intent intent = new Intent(getApplicationContext(), PhoneResetActivity.class);
-        intent.putExtra(Constants.CODE, binding.ccp.getSelectedCountryNameCode());
+        intent.putExtra(Constants.CODE, binding.ccp.getSelectedCountryCode());
         intent.putExtra(Constants.PHONE, binding.phone.getText().toString());
         intent.putExtra(Constants.EMAIL, user.getEmail());
         intent.putExtra(Constants.PASSWORD, user.getPassword());

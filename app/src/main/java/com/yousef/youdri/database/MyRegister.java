@@ -1,25 +1,24 @@
 package com.yousef.youdri.database;
 
 import android.app.Activity;
-import android.content.Context;
-import android.util.Log;
-
 import androidx.annotation.NonNull;
-
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.yousef.youdri.listener.EmailListener;
 import com.yousef.youdri.listener.LoginListener;
 import com.yousef.youdri.listener.MainListener;
 import com.yousef.youdri.listener.PhoneListener;
+import com.yousef.youdri.listener.PrivacyPolicyListener;
 import com.yousef.youdri.listener.VerifyListener;
 import com.yousef.youdri.model.Constants;
+import com.yousef.youdri.model.PrivacyPolicy;
 import com.yousef.youdri.model.User;
 
 import java.util.Objects;
@@ -163,7 +162,7 @@ public class MyRegister {
 
         PhoneAuthOptions options =
                 PhoneAuthOptions.newBuilder(auth)
-                        .setPhoneNumber(code+phoneNumber)       // Phone number to verify
+                        .setPhoneNumber("+"+code+phoneNumber)       // Phone number to verify
                         .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
                         .setActivity(activity)                 // Activity (for callback binding)
                         .setCallbacks(mCallbacks)          // OnVerificationStateChangedCallbacks
@@ -191,6 +190,46 @@ public class MyRegister {
                 );
     }
 
+    public void createUserByPhone(User user, EmailListener emailListener){
+        auth.createUserWithEmailAndPassword(user.getEmail(), user.getPassword())
+                .addOnSuccessListener(authResult ->
+                        saveUserByPhone(user, emailListener)
+                )
+                .addOnFailureListener(e ->
+                        emailListener.fail(e.getMessage())
+                );
+    }
+
+    public void saveUserByPhone(User user, EmailListener emailListener){
+        user.setId(getFirebaseUser().getUid());
+        firestore.collection(Constants.USERS)
+                .document(user.getId())
+                .set(user)
+                .addOnSuccessListener(documentReference ->
+                        saveAuthNameByPhone(user, emailListener)
+                )
+                .addOnFailureListener(e -> {
+                    getFirebaseUser().delete();
+                    emailListener.fail(e.getMessage());
+                });
+    }
+
+    private void saveAuthNameByPhone(User user, EmailListener emailListener){
+        UserProfileChangeRequest userProfileChangeRequest = new UserProfileChangeRequest.Builder()
+                .setDisplayName(user.getName()).build();
+
+        getFirebaseUser().updateProfile(userProfileChangeRequest)
+                .addOnSuccessListener(unused ->
+                    emailListener.sendResetPassword()
+                )
+                .addOnFailureListener(e ->{
+                    getFirebaseUser().delete();
+                    firestore.collection(Constants.USERS)
+                            .document(user.getId()).delete();
+                    emailListener.fail(e.getMessage());
+                });
+    }
+
     //Todo ResetPasswordActivity
     public void resetPasswordWithPhone(String email, String oldPassword, String newPassword, EmailListener emailListener){
         auth.signInWithEmailAndPassword(email, oldPassword)
@@ -210,6 +249,71 @@ public class MyRegister {
                 )
                 .addOnFailureListener(e ->
                         emailListener.fail(e.getMessage())
+                );
+    }
+
+    //Todo RegistrationActivity
+    public void createUser(User user, EmailListener emailListener){
+        auth.createUserWithEmailAndPassword(user.getEmail(), user.getPassword())
+                .addOnSuccessListener(authResult ->
+                    sendVerificationEmail(user, emailListener)
+                )
+                .addOnFailureListener(e ->
+                        emailListener.fail(e.getMessage())
+                );
+    }
+
+    public void sendVerificationEmail(User user, EmailListener emailListener){
+        getFirebaseUser().sendEmailVerification()
+                .addOnSuccessListener(unused ->
+                    saveUser(user, emailListener)
+                )
+                .addOnFailureListener(e -> {
+                    emailListener.fail(e.getMessage());
+                    getFirebaseUser().delete();
+                });
+    }
+
+    public void saveUser(User user, EmailListener emailListener){
+        user.setId(getFirebaseUser().getUid());
+        firestore.collection(Constants.USERS)
+                .document(user.getId())
+                .set(user)
+                .addOnSuccessListener(documentReference ->
+                        saveAuthName(user, emailListener)
+                )
+                .addOnFailureListener(e -> {
+                    getFirebaseUser().delete();
+                    emailListener.fail(e.getMessage());
+                });
+    }
+
+    private void saveAuthName(User user, EmailListener emailListener){
+        UserProfileChangeRequest userProfileChangeRequest = new UserProfileChangeRequest.Builder()
+                .setDisplayName(user.getName()).build();
+
+        getFirebaseUser().updateProfile(userProfileChangeRequest)
+                .addOnSuccessListener(unused ->{
+                            signOut();
+                            emailListener.sendResetPassword();
+                })
+                .addOnFailureListener(e ->{
+                    getFirebaseUser().delete();
+                    firestore.collection(Constants.USERS)
+                            .document(user.getId()).delete();
+                    emailListener.fail(e.getMessage());
+                });
+    }
+
+    public void getPrivacyPolicy(PrivacyPolicyListener privacyPolicyListener){
+        firestore.collection(Constants.PRIVACY_POLICY)
+                .document(Constants.PRIVACY_POLICY_ID)
+                .get()
+                .addOnSuccessListener(documentSnapshot ->
+                        privacyPolicyListener.getPrivacyPolicy(documentSnapshot.toObject(PrivacyPolicy.class))
+                )
+                .addOnFailureListener(e ->
+                        privacyPolicyListener.onFailurePrivacyPolicy(e.getMessage())
                 );
     }
 }

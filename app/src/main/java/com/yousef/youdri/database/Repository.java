@@ -1,17 +1,17 @@
 package com.yousef.youdri.database;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-
 import com.google.firebase.auth.FirebaseUser;
 import com.yousef.internetconnectionjava.MyConnectionJava;
 import com.yousef.youdri.listener.EmailListener;
 import com.yousef.youdri.listener.LoginListener;
 import com.yousef.youdri.listener.MainListener;
 import com.yousef.youdri.listener.PhoneListener;
+import com.yousef.youdri.listener.PrivacyPolicyListener;
 import com.yousef.youdri.listener.VerifyListener;
+import com.yousef.youdri.model.User;
 
 /**
  * اللَّهُمَّ صَلِّ علَى مُحَمَّدٍ وعلَى آلِ مُحَمَّدٍ، كما صَلَّيْتَ علَى إبْرَاهِيمَ وعلَى آلِ إبْرَاهِيمَ؛ إنَّكَ حَمِيدٌ مَجِيدٌ
@@ -97,8 +97,25 @@ public class Repository {
         register.checkOTP(code, verificationId, verifyListener);
     }
 
+    public void createUserByPhone(User user, EmailListener emailListener){
+        register.createUserByPhone(user, emailListener);
+    }
+
     //Todo ResetPasswordActivity
     public void resetPasswordWithPhone(String email, String oldPassword, String newPassword, EmailListener emailListener) {
         register.resetPasswordWithPhone(email, oldPassword, newPassword, emailListener);
+    }
+
+    //Todo RegistrationActivity
+    public void createUser(User user, EmailListener emailListener){
+        register.createUser(user, emailListener);
+    }
+
+    public void getPrivacyPolicy(PrivacyPolicyListener listener){
+        register.getPrivacyPolicy(listener);
+    }
+
+    public Dialog showDialog(int layout){
+        return functions.showDialog(layout);
     }
 }

@@ -1,13 +1,13 @@
 <resources>
-    <!--Todo LoginActivity-->
+    <!--LoginActivity-->
     <string name="app_name" translatable="false">Youdri</string>
 
-    <!--Todo BlockActivity-->
+    <!--BlockActivity-->
     <string name="block">Block</string>
     <string name="blockUser">You have been blocked</string>
     <string name="whatsapp">Whatsapp</string>
 
-    <!--Todo LoginActivity-->
+    <!--LoginActivity-->
     <string name="login">Login</string>
     <string name="email">Email</string>
     <string name="phone">Phone</string>
@@ -20,11 +20,11 @@
     <string name="passwordError">Your password is incorrect</string>
     <string name="userNotExist">User not found</string>
 
-    <!--Todo ForgotPasswordActivity-->
+    <!--ForgotPasswordActivity-->
     <string name="resetPassword">Reset password</string>
     <string name="checkEmail">Open this email:</string>
 
-    <!--Todo PhoneResetActivity-->
+    <!--PhoneResetActivity-->
     <string name="verification">Verification</string>
     <string name="code">Code is sent to</string>
     <string name="unSendMessage">Don\'t receive code?</string>
@@ -37,7 +37,7 @@
     <string name="tryAgain">The sms code has expired. Please re-send the verification code to try again.</string>
 
 
-    <!--Todo RegistrationActivity-->
+    <!--RegistrationActivity-->
     <string name="name">Name</string>
     <string name="confirmPassword">Confirm password</string>
     <string name="privacyPolicy">I agree to</string>
@@ -51,15 +51,18 @@
     <string name="save">Save</string>
 
 
-    <!--Todo ResetPasswordActivity-->
+    <!--ResetPasswordActivity-->
     <string name="newPassword">New password</string>
     <string name="confirmNewPassword">Confirm new password</string>
 
-    <!--Todo HomeActivity-->
+    <!--HomeActivity-->
     <string name="home">Home</string>
     <string name="cart">Cart</string>
     <string name="profile">Profile</string>
     <string name="list">Lists</string>
     <string name="search">Search in Youdri</string>
+
+    <!--SearchActivity-->
+    <string name="back">Back</string>
 
 </resources>

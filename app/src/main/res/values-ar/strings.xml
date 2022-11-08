@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--Todo BlockActivity-->
+    <!--BlockActivity-->
     <string name="block">حظر</string>
     <string name="blockUser">لقد تم حضرك</string>
     <string name="whatsapp">واتساب</string>
 
-    <!--Todo LoginActivity-->
+    <!--LoginActivity-->
     <string name="login">تسجيل الدخول</string>
     <string name="email">البريد الإلكتروني</string>
     <string name="phone">رقم الهاتف</string>
@@ -19,11 +19,11 @@
     <string name="userNotExist">المستخدم غير موجود</string>
 
 
-    <!--Todo ForgotPasswordActivity-->
+    <!--ForgotPasswordActivity-->
     <string name="resetPassword">إعادة تعيين كلمة المرور</string>
     <string name="checkEmail">أفتح هذا البريد الإلكتروني:</string>
 
-    <!--Todo PhoneResetActivity-->
+    <!--PhoneResetActivity-->
     <string name="verification">التحقق</string>
     <string name="code">يتم إرسال الرمز إلى</string>
     <string name="unSendMessage">ألا تتلقى رمزًا؟</string>
@@ -35,11 +35,11 @@
     <string name="inValid">رمز التحقق من الرسائل القصيرة غير صالح</string>
     <string name="tryAgain">انتهت صلاحية رمز الرسائل القصيرة. يرجى إعادة إرسال رمز التحقق للمحاولة مرة أخرى.</string>
 
-    <!--Todo ResetPasswordActivity-->
+    <!--ResetPasswordActivity-->
     <string name="newPassword">كلمة السر الجديدة</string>
     <string name="confirmNewPassword">تأكيد كلمة السر الجديدة</string>
 
-    <!--Todo RegistrationActivity-->
+    <!--RegistrationActivity-->
     <string name="name">الآسم</string>
     <string name="confirmPassword">تأكيد كلمة السر</string>
     <string name="privacyPolicy">أوافق على</string>
@@ -52,10 +52,13 @@
     <string name="emailExist">تم استخدام عنوان البريد الإلكتروني بالفعل من قبل حساب آخر.</string>
     <string name="save">حفظ</string>
 
-    <!--Todo HomeActivity-->
+    <!--HomeActivity-->
     <string name="home">الصفحة الرئيسية</string>
     <string name="cart">العربة</string>
     <string name="profile">الصفحة الشخصية</string>
     <string name="list">القوائم</string>
     <string name="search">البحث في Youdri</string>
+
+    <!--SearchActivity-->
+    <string name="back">رجوع</string>
 </resources>

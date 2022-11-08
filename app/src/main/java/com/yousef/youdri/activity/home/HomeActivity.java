@@ -13,9 +13,19 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+/**
+ * اللَّهُمَّ صَلِّ علَى مُحَمَّدٍ وعلَى آلِ مُحَمَّدٍ، كما صَلَّيْتَ علَى إبْرَاهِيمَ وعلَى آلِ إبْرَاهِيمَ؛ إنَّكَ حَمِيدٌ مَجِيدٌ
+ * اللَّهُمَّ بَارِكْ علَى مُحَمَّدٍ وعلَى آلِ مُحَمَّدٍ، كما بَارَكْتَ علَى إبْرَاهِيمَ وعلَى آلِ إبْرَاهِيمَ؛ إنَّكَ حَمِيدٌ مَجِيدٌ
+
+ *تم برمجتُه بواسطة : يوسف شعبان
+ * +201142747343
+ * yousefshaabansaad42@gmail.com
+ */
+
 public class HomeActivity extends AppCompatActivity {
 
     private ActivityHomeBinding binding;
+    private Repository repository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +44,11 @@ public class HomeActivity extends AppCompatActivity {
         //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
-        //new Repository(this).signOut();
+        repository = new Repository(this);
 
-        binding.search.setOnClickListener(v -> {
-
-        });
+        binding.search.setOnClickListener(v ->
+            repository.setIntent(SearchActivity.class)
+        );
     }
 
 }

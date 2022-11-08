@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.yousef.youdri">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -14,13 +16,13 @@
         android:theme="@style/Theme.Youdri"
         tools:targetApi="31">
         <activity
+            android:name=".activity.home.SearchActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Youdri.NoActionBar" />
+        <activity
             android:name=".activity.home.HomeActivity"
             android:exported="false"
-            android:theme="@style/Theme.Youdri.NoActionBar"/>
-        <activity
-            android:name=".activity.registration.EmailVerificationActivity"
-            android:exported="false"
-            android:label="@string/email" />
+            android:theme="@style/Theme.Youdri.NoActionBar" />
         <activity
             android:name=".activity.registration.PhoneVerificationActivity"
             android:exported="false"
